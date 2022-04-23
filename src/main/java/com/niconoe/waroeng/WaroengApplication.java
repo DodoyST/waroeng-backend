@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class WaroengApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(WaroengApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(WaroengApplication.class, args);
+    }
 }
