@@ -14,8 +14,8 @@ import javax.persistence.Table;
 @Getter
 @EqualsAndHashCode
 @ToString
-@Table(name = "mst_product")
-public class Product {
+@Table(name = "mst_unit")
+public class Unit {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -23,13 +23,10 @@ public class Product {
     @Setter
     private String name;
     @Setter
-    private String picture;
-    @Setter
-    private String barcode;
+    private String abbreviation;
 
-    public Product(String name, String picture, String barcode) {
+    public Unit(String name, String abbreviation) {
         this.name = name;
-        this.picture = picture;
-        this.barcode = barcode;
+        this.abbreviation = abbreviation;
     }
 }

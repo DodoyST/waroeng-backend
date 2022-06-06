@@ -35,7 +35,7 @@ public class ProductServImpl implements ProductService {
     @Override
     public Product getById(String id) {
         if (!productRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Product dengan id %s tidak ditemukan", id));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product tidak ditemukan");
         }
         return productRepository.getById(id);
     }
@@ -65,7 +65,7 @@ public class ProductServImpl implements ProductService {
         if (productRepository.existsByName(product.getName())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, String.format("Nama %s sudah digunakan product lain", product.getName()));
         }
-        if (productRepository.existsByName(product.getBarcode())) {
+        if (productRepository.existsByBarcode(product.getBarcode())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Barcode tersebut telah digunakan product lain");
         }
     }
