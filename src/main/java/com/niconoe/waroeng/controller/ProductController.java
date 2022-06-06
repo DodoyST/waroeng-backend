@@ -3,6 +3,7 @@ package com.niconoe.waroeng.controller;
 import com.niconoe.waroeng.entity.Product;
 import com.niconoe.waroeng.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +20,8 @@ public class ProductController {
     }
 
     @GetMapping(path = "/products")
-    public List<Product> getAllProduct() {
-        return productService.getAll();
+    public Page<Product> getAllProduct(@RequestParam(name = "page", defaultValue = "0", required = false) Integer page, @RequestParam(name = "size", defaultValue = "5", required = false) Integer size, @RequestParam(name = "filter", defaultValue = "", required = false) String filter) {
+        return productService.getAllPageable(page, size, filter);
     }
 
     @GetMapping(path = "/product/{id}")
