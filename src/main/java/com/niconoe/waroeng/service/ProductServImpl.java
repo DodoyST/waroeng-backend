@@ -23,12 +23,7 @@ public class ProductServImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAll() {
-        return productRepository.findAll();
-    }
-
-    @Override
-    public Page<Product> getAllPageable(Integer page, Integer size, String filter) {
+    public Page<Product> getAll(Integer page, Integer size, String filter) {
         return productRepository.findAllByNameContains(PageRequest.of(page, size), filter);
     }
 
@@ -37,7 +32,7 @@ public class ProductServImpl implements ProductService {
         if (!productRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product tidak ditemukan");
         }
-        return productRepository.getById(id);
+        return productRepository.findById(id).get();
     }
 
     @Override
@@ -58,7 +53,7 @@ public class ProductServImpl implements ProductService {
         if (!productRepository.existsByBarcode(barcode)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product tidak ditemukan");
         }
-        return productRepository.getByBarcode(barcode);
+        return productRepository.findByBarcode(barcode).get();
     }
 
     private void existValidation(Product product) {

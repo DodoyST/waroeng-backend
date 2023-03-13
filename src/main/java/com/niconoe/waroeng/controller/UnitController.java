@@ -13,11 +13,6 @@ public class UnitController {
     @Autowired
     private UnitService unitService;
 
-    @PostMapping(path = "/unit")
-    public Unit createUnit(@RequestBody Unit unit) {
-        return unitService.create(unit);
-    }
-
     @GetMapping(path = "/units")
     public List<Unit> getAllUnit() {
         return unitService.getAll();
@@ -26,15 +21,5 @@ public class UnitController {
     @GetMapping(path = "/unit/{id}")
     public Unit getUnitById(@PathVariable(name = "id") String id) {
         return unitService.getById(id);
-    }
-
-    @PutMapping(path = "/unit")
-    public Unit updateUnit(@RequestBody Unit unit) {
-        return unitService.update(unit);
-    }
-
-    @DeleteMapping(path = "/unit")
-    public Unit deleteUnitById(@RequestParam(name = "id") String id) {
-        return unitService.deleteById(id);
     }
 }

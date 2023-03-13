@@ -3,10 +3,9 @@ package com.niconoe.waroeng.entity;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
@@ -23,13 +22,13 @@ public class Product {
     @Setter
     private String name;
     @Setter
-    private String picture;
+    private String pictureUrl;
     @Setter
     private String barcode;
 
-    public Product(String name, String picture, String barcode) {
+    public Product(String name, String pictureUrl, String barcode) {
         this.name = name;
-        this.picture = picture;
+        this.pictureUrl = pictureUrl;
         this.barcode = barcode;
     }
 }

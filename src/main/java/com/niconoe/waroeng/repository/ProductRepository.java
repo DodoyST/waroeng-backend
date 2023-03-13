@@ -10,13 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, String> {
-    Optional<Product> findProductByName(String name);
-
     Page<Product> findAllByNameContains(Pageable pageable, String filter);
-
-    Product getByBarcode(String barcode);
-
+    Optional<Product> findByBarcode(String barcode);
     boolean existsByName(String name);
-
     boolean existsByBarcode(String barcode);
 }

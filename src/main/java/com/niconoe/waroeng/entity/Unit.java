@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
@@ -17,8 +18,6 @@ import javax.persistence.Table;
 @Table(name = "mst_unit")
 public class Unit {
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid")
     private String id;
     @Setter
     private String name;

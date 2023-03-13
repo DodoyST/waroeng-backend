@@ -19,7 +19,7 @@ public class ProductController {
 
     @GetMapping(path = "/products")
     public Page<Product> getAllProduct(@RequestParam(name = "page", defaultValue = "0", required = false) Integer page, @RequestParam(name = "size", defaultValue = "5", required = false) Integer size, @RequestParam(name = "filter", defaultValue = "", required = false) String filter) {
-        return productService.getAllPageable(page, size, filter);
+        return productService.getAll(page, size, filter);
     }
 
     @GetMapping(path = "/product/{id}")
