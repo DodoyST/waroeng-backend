@@ -9,12 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-
 @Service
 public class ProductServImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private ProductUnitMappingService productUnitMappingService;
 
     @Override
     public Product create(Product product) {
@@ -44,6 +44,7 @@ public class ProductServImpl implements ProductService {
     @Override
     public Product deleteById(String id) {
         Product product = getById(id);
+        productUnitMappingService.deleteByProduct(product);
         productRepository.deleteById(id);
         return product;
     }
